@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');}catch(e){}})();
+(function(){try{
+  var qs=new URLSearchParams(location.search);
+  if(qs.has('lang')){try{localStorage.setItem('lang',qs.get('lang'))}catch(e){}}
+  var pref=new URLSearchParams(location.search).get('lang');if(pref){try{localStorage.setItem('lang',pref)}catch(e){}}else{try{pref=localStorage.getItem('lang')}catch(e){}}
+  if(pref==='ru'){location.replace('index.html?lang=ru');}
+}catch(e){}})();
+</script>
+<link rel="canonical" href="https://marecki.me/index-en.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="ru" href="https://marecki.me/">
+<link rel="alternate" hreflang="en" href="https://marecki.me/index-en.html">
+<link rel="alternate" hreflang="x-default" href="https://marecki.me/">
+<title>Sasha Marecki — E-commerce Marketing</title>
+<meta name="description" content="Sasha Marecki — marketing director, 20+ years in e-commerce and FMCG. Scale: 25+ team, $10M+ annual budget, 2M+ active customer base.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Sasha Marecki — E-commerce Marketing">
+<meta property="og:description" content="Marketing director, 20+ years. 25+ team · $10M+ budget/yr · 2M+ active customers. ×3 growth, LFL +22%, up to 40% share.">
+<meta property="og:url" content="https://marecki.me/index-en.html">
+<meta property="og:image" content="https://marecki.me/images/og-en.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://marecki.me/images/og-en.png">
+<style>
+  :root{
+    --bg:#f7f5ef; --bg-card:#fffdf8;
+    --ink:#1f1d1a; --ink-soft:#57534c; --muted:#8b857a; --line:#e6e1d6;
+    --accent:#c15f3c; --accent-2:#a94f30;
+    --soft:#f0d9cd; --btn-border:#e2c6b8; --btn-hover:#f8ece5; --edu-hi:#fbf1ea; --yrs:#a8a297;
+    --shadow:0 10px 40px rgba(60,40,25,.16);
+    --shadow-2:0 14px 34px rgba(60,40,25,.09);
+    --shadow-sm:0 4px 16px rgba(60,40,25,.10);
+    --serif:ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+    --sans:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --maxw:940px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme]){
+      --bg:#1a1714; --bg-card:#242019;
+      --ink:#f3eee5; --ink-soft:#cdc5b6; --muted:#9a9284; --line:#39332b;
+      --accent:#dd8563; --accent-2:#e79a78;
+      --soft:#4a2f24; --btn-border:#5a4436; --btn-hover:#33291f; --edu-hi:#2e261d; --yrs:#807869;
+      --shadow:0 10px 40px rgba(0,0,0,.55); --shadow-2:0 14px 34px rgba(0,0,0,.45); --shadow-sm:0 4px 16px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1a1714; --bg-card:#242019;
+    --ink:#f3eee5; --ink-soft:#cdc5b6; --muted:#9a9284; --line:#39332b;
+    --accent:#dd8563; --accent-2:#e79a78;
+    --soft:#4a2f24; --btn-border:#5a4436; --btn-hover:#33291f; --edu-hi:#2e261d; --yrs:#807869;
+    --shadow:0 10px 40px rgba(0,0,0,.55); --shadow-2:0 14px 34px rgba(0,0,0,.45); --shadow-sm:0 4px 16px rgba(0,0,0,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.65;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    transition:background .3s ease,color .3s ease;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--soft)}
+
+  .topbar{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:10px;align-items:center}
+  .theme-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--bg-card);
+    color:var(--ink);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow-sm);transition:transform .16s ease,border-color .16s ease}
+  .theme-btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .lang{display:flex;gap:2px;background:var(--bg-card);border:1px solid var(--line);border-radius:999px;
+    padding:3px;box-shadow:var(--shadow-sm)}
+  .lang a{font-size:13px;font-weight:700;text-decoration:none;color:var(--ink-soft);
+    padding:6px 13px;border-radius:999px;line-height:1;letter-spacing:.03em}
+  .lang a.active{background:var(--accent);color:#fff}
+
+  .hero{padding:88px 0 56px;position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:1}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(620px 320px at 88% 10%, rgba(193,95,60,.12), transparent 62%),
+               radial-gradient(520px 340px at -6% 92%, rgba(193,95,60,.08), transparent 60%)}
+  .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .hero-inner{display:flex;gap:44px;align-items:center;flex-wrap:wrap}
+  .photo{flex:0 0 auto;width:168px;height:168px;border-radius:50%;
+    object-fit:cover;object-position:66% 30%;border:5px solid var(--bg-card);box-shadow:var(--shadow)}
+  .hero-text{flex:1 1 340px;min-width:280px}
+  .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:16px}
+  h1{font-family:var(--serif);font-size:clamp(38px,6.5vw,60px);line-height:1.02;font-weight:600;letter-spacing:-.5px;color:var(--ink)}
+  .subtitle{font-size:clamp(18px,2.4vw,22px);color:var(--ink-soft);margin-top:18px;max-width:580px}
+  .subtitle b{color:var(--ink);font-weight:600}
+  .meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-size:13.5px;color:var(--ink-soft);padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg-card)}
+
+  .cta-btn{display:inline-flex;align-items:center;gap:9px;margin-top:24px;
+    font-size:15.5px;font-weight:700;text-decoration:none;color:#fff;background:var(--accent);
+    padding:13px 24px;border-radius:12px;box-shadow:var(--shadow-sm);
+    transition:transform .16s ease,background .16s ease}
+  .cta-btn:hover{transform:translateY(-2px);background:var(--accent-2)}
+  .cta-btn svg{width:18px;height:18px}
+
+  .contacts{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+  .contacts a{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;text-decoration:none;
+    color:var(--accent-2);padding:9px 16px;border:1px solid var(--btn-border);border-radius:12px;background:var(--bg-card);
+    transition:background .16s ease,border-color .16s ease,transform .16s ease}
+  .contacts a:hover{background:var(--btn-hover);border-color:var(--accent);transform:translateY(-2px)}
+  .contacts svg{width:17px;height:17px;flex:0 0 auto}
+  .qr-card{display:inline-flex;align-items:center;gap:14px;padding:12px;border:1px solid var(--btn-border);
+    border-radius:16px;background:var(--bg-card);text-decoration:none;
+    transition:background .16s ease,border-color .16s ease,transform .16s ease}
+  .qr-card:hover{background:var(--btn-hover);border-color:var(--accent);transform:translateY(-2px)}
+  .qr-card img{width:92px;height:92px;display:block;border-radius:8px}
+  .qr-card .qr-txt b{display:flex;align-items:center;gap:7px;color:var(--ink);font-size:15px;font-weight:700}
+  .qr-card .qr-txt .h{color:var(--accent-2);font-size:14px;font-weight:600;margin-top:2px}
+  .qr-card .qr-txt .hint{color:var(--muted);font-size:12.5px;margin-top:6px;max-width:150px;line-height:1.35}
+  .qr-card .qr-txt svg{width:16px;height:16px}
+
+  .scope{background:var(--bg-card);border:1px solid var(--line);border-radius:22px;padding:34px 28px;box-shadow:var(--shadow-2)}
+  .scope-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px}
+  .stat{text-align:center}
+  .stat .big{font-family:var(--serif);font-size:clamp(34px,5.5vw,50px);font-weight:600;color:var(--accent);letter-spacing:-1px;line-height:1}
+  .stat .cap{font-size:14px;color:var(--ink-soft);margin-top:10px;line-height:1.4}
+
+  section{padding:52px 0}
+  .divider{height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto}
+  .kicker{font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:20px}
+  h2{font-family:var(--serif);font-size:clamp(26px,3.8vw,34px);font-weight:600;letter-spacing:-.3px;line-height:1.15;margin-bottom:24px}
+  .prose p{font-size:18px;color:var(--ink-soft);max-width:720px}
+  .prose p + p{margin-top:18px}
+  .prose b{color:var(--ink);font-weight:600}
+
+  .dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:6px}
+  .dir{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:24px;
+    transition:transform .18s ease,box-shadow .18s ease}
+  .dir:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+  .dir h3{font-size:17px;font-weight:700;margin-bottom:8px}
+  .dir p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+  .res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:6px}
+  .res{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:28px 24px;
+    transition:transform .18s ease,box-shadow .18s ease}
+  .res:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+  .res .big{font-family:var(--serif);font-size:clamp(38px,5vw,52px);font-weight:600;color:var(--accent);letter-spacing:-1px;line-height:1}
+  .res .cap{font-size:14.5px;color:var(--ink-soft);margin-top:12px;line-height:1.45}
+
+  .timeline{margin-top:6px;border-left:2px solid var(--line)}
+  .tl-item{position:relative;display:grid;grid-template-columns:150px 1fr;gap:26px;padding:0 0 34px 30px}
+  .tl-item::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-when{font-size:14px;color:var(--muted);font-weight:600;padding-top:1px}
+  .tl-when .yrs{display:block;font-weight:400;font-size:13px;color:var(--yrs);margin-top:2px}
+  .tl-role{font-size:18px;font-weight:700;color:var(--ink)}
+  .tl-field{font-size:15px;color:var(--accent-2);font-weight:600;margin:2px 0 6px}
+  .tl-desc{font-size:15px;color:var(--ink-soft);line-height:1.55}
+
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:6px}
+  .edu{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px}
+  .edu.hi{border-color:var(--btn-border);background:var(--edu-hi)}
+  .edu .flag{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .edu h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:10px 0 6px;line-height:1.2}
+  .edu p{font-size:14.5px;color:var(--muted)}
+  .edu a{color:var(--accent-2);text-decoration:none;border-bottom:1px solid var(--btn-border)}
+
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px}
+  .fact{display:flex;gap:14px;align-items:flex-start}
+  .fact .mark{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--soft);color:var(--accent-2);
+    display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;font-family:var(--serif)}
+  .fact p{font-size:15.5px;color:var(--ink-soft);line-height:1.5}
+  .fact b{color:var(--ink);font-weight:600}
+
+  .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .skill{font-size:14.5px;color:var(--ink);background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:9px 15px}
+
+  .cta-band{text-align:center;padding:34px 28px;border-radius:24px;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);box-shadow:var(--shadow-2)}
+  .cta-band h2{color:#fff;margin-bottom:10px}
+  .cta-band p{color:rgba(255,255,255,.9);font-size:17px;margin-bottom:24px}
+  .cta-band a{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--accent-2);
+    font-size:16px;font-weight:700;text-decoration:none;padding:14px 28px;border-radius:12px;transition:transform .16s ease}
+  .cta-band a:hover{transform:translateY(-2px)}
+  .cta-band a svg{width:19px;height:19px}
+
+  .finale{padding:72px 0}
+  .finale blockquote{font-family:var(--serif);font-size:clamp(24px,3.6vw,34px);line-height:1.3;font-weight:500;color:var(--ink);max-width:780px;letter-spacing:-.2px}
+  .finale blockquote::before{content:"“";color:var(--accent);font-size:1.2em;line-height:0;vertical-align:-.15em;margin-right:.04em}
+  .finale .who{margin-top:24px;font-size:15px;color:var(--muted);letter-spacing:.03em}
+
+  footer{padding:34px 0;border-top:1px solid var(--line)}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  footer p{font-size:13px;color:var(--muted)}
+  .ver{display:inline-flex;align-items:center;gap:12px;font-size:13px}
+  .ver .badge{font-weight:700;color:var(--accent);border:1px solid var(--btn-border);border-radius:999px;padding:3px 10px}
+  .ver a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  .ver a:hover{color:var(--accent)}
+
+  /* hero entrance */
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .js .hero-text>*{opacity:0;animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .js .hero-text>*:nth-child(1){animation-delay:.05s}
+  .js .hero-text>*:nth-child(2){animation-delay:.12s}
+  .js .hero-text>*:nth-child(3){animation-delay:.19s}
+  .js .hero-text>*:nth-child(4){animation-delay:.26s}
+  .js .hero-text>*:nth-child(5){animation-delay:.33s}
+  .js .hero-text>*:nth-child(6){animation-delay:.40s}
+
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(118px,1fr);gap:14px;margin-top:6px}
+  .b-tile{background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;
+    display:flex;flex-direction:column;justify-content:center;transition:transform .18s ease,box-shadow .18s ease}
+  .b-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+  .b-tile .big{font-family:var(--serif);font-size:clamp(30px,4vw,44px);font-weight:600;color:var(--accent);letter-spacing:-1px;line-height:1}
+  .b-tile .cap{font-size:14px;color:var(--ink-soft);margin-top:10px;line-height:1.4}
+  .b-tile .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:auto}
+  .b1{grid-column:span 2;grid-row:span 2;justify-content:flex-end}
+  .b-wide{grid-column:span 3}
+  .b1.accent{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:#fff}
+  .b1.accent .big{color:#fff;font-size:clamp(46px,7vw,74px)}
+  .b1.accent .cap{color:rgba(255,255,255,.92);font-size:16px}
+  .b1.accent .tag{color:rgba(255,255,255,.72)}
+  @media (max-width:640px){
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .b1{grid-column:span 2;grid-row:span 1}
+    .b-wide{grid-column:span 2}
+  }
+
+  .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:640px){
+    .hero{padding:64px 0 40px}
+    .hero-inner{gap:26px}
+    .photo{width:128px;height:128px}
+    section{padding:40px 0}
+    .tl-item{grid-template-columns:1fr;gap:6px;padding-left:26px}
+    .tl-when{padding-top:0}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .js .reveal{opacity:1!important;transform:none!important}
+    .js .hero-text>*{opacity:1!important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" title="Light / dark theme">☾</button>
+    <nav class="lang">
+      <a href="index.html?lang=ru" onclick="try{localStorage.setItem('lang','ru')}catch(e){}">RU</a>
+      <a href="index-en.html" class="active" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <img class="photo" src="images/Photo.png?v=2" alt="Sasha Marecki">
+        <div class="hero-text">
+          <div class="eyebrow">E-commerce marketing</div>
+          <h1>Sasha Marecki</h1>
+          <p class="subtitle">Marketing director with <b>20+ years</b> of experience — from FMCG and retail chains to <b>e-commerce marketing</b>. I build marketing as a system that delivers predictable growth.</p>
+          <div class="meta">
+            <span class="chip">Minsk</span>
+            <span class="chip">CMO · Head of Marketing</span>
+            <span class="chip">Data-driven</span>
+          </div>
+          <a class="cta-btn" href="https://t.me/A_Marecki" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.5 18.9 19.2c-.23 1.02-.83 1.27-1.68.79l-4.64-3.42-2.24 2.16c-.25.25-.46.46-.94.46l.33-4.73L18.6 5.9c.37-.33-.08-.51-.58-.18L6.4 13.06l-4.6-1.44c-1-.31-1.02-1 .21-1.48L20.65 3.05c.83-.31 1.56.2 1.29 1.45Z"/></svg>
+            Let's talk
+          </a>
+          <div class="contacts">
+            <a href="mailto:sasha.maretski19@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg>
+              sasha.maretski19@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BENTO -->
+  <section style="padding-top:8px">
+    <div class="wrap reveal">
+      <div class="kicker">In numbers</div>
+      <h2>Scale and results</h2>
+      <div class="bento">
+        <div class="b-tile b1 accent">
+          <div class="tag">scale today</div>
+          <div class="big" data-count="2" data-suf="M+">2M+</div>
+          <div class="cap">active customer base per year</div>
+        </div>
+        <div class="b-tile"><div class="big" data-count="25" data-suf="+">25+</div><div class="cap">people in the team</div></div>
+        <div class="b-tile"><div class="big" data-count="10" data-pre="$" data-suf="M+">$10M+</div><div class="cap">annual marketing budget</div></div>
+        <div class="b-tile"><div class="big" data-count="3" data-pre="×">×3</div><div class="cap">customer base growth</div></div>
+        <div class="b-tile"><div class="big" data-count="22" data-pre="+" data-suf="%">+22%</div><div class="cap">LFL revenue growth</div></div>
+        <div class="b-tile"><div class="big" data-count="40" data-suf="%">40%</div><div class="cap">category market share</div></div>
+        <div class="b-tile b-wide"><div class="big">from&nbsp;scratch</div><div class="cap">marketing teams and methodology built from the ground up</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section class="prose">
+    <div class="wrap reveal">
+      <div class="kicker">About</div>
+      <h2>Marketing as a system, not a set of campaigns</h2>
+      <p>Over more than twenty years I have moved from launching brands on the market to leading marketing in e-commerce. Different industries — pharma, FMCG, distribution, retail chains, online retail — taught me one thing: sustainable growth doesn't come from flashy activations, but from a well-built system where every part works for revenue and the customer.</p>
+      <p>I think in numbers and cause-and-effect: not “reach went up,” but what it did for revenue, orders and the active customer base. <b>A baseline, segment-level breakdowns, economic impact</b> — for me this isn't reporting for its own sake, it's how you make decisions you can defend in front of the business owner.</p>
+      <p>I like building from scratch and putting order into processes — more than once I've set up a marketing team and its methodology where none existed.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NOW -->
+  <section>
+    <div class="wrap reveal">
+      <div class="kicker">What I do now</div>
+      <h2>E-commerce marketing under one strategy</h2>
+      <div class="dir-grid">
+        <div class="dir"><h3>Digital</h3><p>Performance, SEO, marketplaces, programmatic. Media plans and budgets driven by ad-cost share, CPO and ROMI, with end-to-end attribution.</p></div>
+        <div class="dir"><h3>PR / SMM</h3><p>Awareness and reputation, work with media and influencers, crisis communications.</p></div>
+        <div class="dir"><h3>Brand</h3><p>Positioning and a single brand platform across all channels. Brand health and NPS as the compass.</p></div>
+        <div class="dir"><h3>CRM</h3><p>Growing the active customer base and repeat purchases: segmentation, personalization, loyalty, a single customer profile.</p></div>
+        <div class="dir"><h3>B2B</h3><p>A separate strategy for the corporate segment: product line, pricing, sales support.</p></div>
+        <div class="dir"><h3>Analytics</h3><p>End-to-end analytics across channels, reporting for leadership, A/B testing of hypotheses by segment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CAREER -->
+  <section>
+    <div class="wrap reveal">
+      <div class="kicker">Career path</div>
+      <h2>20+ years in marketing — by area</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-when">present</div>
+          <div>
+            <div class="tl-role">Marketing Director</div>
+            <div class="tl-field">E-commerce / online retail</div>
+            <div class="tl-desc">Marketing strategy and P&amp;L, five directions in the team, growth of revenue, orders and the active customer base while keeping ad-cost share under control.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2014 — 2021<span class="yrs">~7 years</span></div>
+          <div>
+            <div class="tl-role">Marketing Director</div>
+            <div class="tl-field">Retail chains (drogerie, home goods, groceries)</div>
+            <div class="tl-desc">Building marketing teams from scratch, category management, loyalty programs, digital and SMM, budget management.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2010 — 2014<span class="yrs">~4 years</span></div>
+          <div>
+            <div class="tl-role">Brand management</div>
+            <div class="tl-field">FMCG (coffee, tea, confectionery)</div>
+            <div class="tl-desc">Launching private brands, up to 40% category market share, trade activities with key accounts, product portfolio management.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2004 — 2010<span class="yrs">~6 years</span></div>
+          <div>
+            <div class="tl-role">Division Manager</div>
+            <div class="tl-field">Pharma &amp; FMCG, Russian market</div>
+            <div class="tl-desc">Launching private brands on the Russian market, building sales and distribution across territories, managing regional teams.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="wrap reveal">
+      <div class="kicker">Education</div>
+      <h2>Belarus and the Netherlands</h2>
+      <div class="edu-grid">
+        <div class="edu">
+          <div class="flag">Belarus</div>
+          <h3>Marketing</h3>
+          <p>Higher education — marketing and commerce.</p>
+        </div>
+        <div class="edu">
+          <div class="flag">Belarus</div>
+          <h3>Philosophy</h3>
+          <p>BSU — higher education in the humanities, philosophy and social sciences.</p>
+        </div>
+        <div class="edu hi">
+          <div class="flag">Netherlands</div>
+          <h3>Marketing Executive Master EQF-6</h3>
+          <p><a href="https://emc.be" target="_blank" rel="noopener">emc.be</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FACTS -->
+  <section>
+    <div class="wrap reveal">
+      <div class="kicker">Beyond the résumé</div>
+      <h2>A few things worth knowing</h2>
+      <div class="facts">
+        <div class="fact"><div class="mark">4+</div><p>I <b>teach</b> courses on “customer base management” and “marketing &amp; sales integration” at a business school — for over four years.</p></div>
+        <div class="fact"><div class="mark">$</div><p>Vanity metrics with no link to money don't convince me: <b>reach has to convert</b> into orders.</p></div>
+        <div class="fact"><div class="mark">≡</div><p>I like being <b>conclusion-first</b>: the takeaway and the numbers first, then the reasons, and a recommendation at the end.</p></div>
+        <div class="fact"><div class="mark">~</div><p>Outside work — <b>swimming, hiking</b> and fiction (sci-fi and fantasy).</p></div>
+      </div>
+      <div class="skills" style="margin-top:34px">
+        <span class="skill">Strategic planning</span>
+        <span class="skill">Brand management</span>
+        <span class="skill">Marketing analytics</span>
+        <span class="skill">Budget management</span>
+        <span class="skill">Product portfolio</span>
+        <span class="skill">Project management</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section>
+    <div class="wrap reveal">
+      <div class="cta-band">
+        <h2>Let's talk</h2>
+        <p>Open to a conversation — strategy, consulting, sharing experience.</p>
+        <a href="https://t.me/A_Marecki" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.5 18.9 19.2c-.23 1.02-.83 1.27-1.68.79l-4.64-3.42-2.24 2.16c-.25.25-.46.46-.94.46l.33-4.73L18.6 5.9c.37-.33-.08-.51-.58-.18L6.4 13.06l-4.6-1.44c-1-.31-1.02-1 .21-1.48L20.65 3.05c.83-.31 1.56.2 1.29 1.45Z"/></svg>
+          Message on Telegram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <section class="finale">
+    <div class="wrap reveal">
+      <blockquote>Marketing isn't about beautiful campaigns — it's about predictable growth you can explain with numbers.</blockquote>
+      <div class="who">— Sasha Marecki</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-row">
+        <p>© 2026 Sasha Marecki · Marketing Director</p>
+        <span class="ver"><a href="index.html?lang=ru" onclick="try{localStorage.setItem('lang','ru')}catch(e){}">Русская версия →</a></span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var btn=document.getElementById('themeToggle');
+  function cur(){var a=document.documentElement.getAttribute('data-theme');return a?a:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
+  function icon(){if(btn)btn.textContent=cur()==='dark'?'☀':'☾';}
+  icon();
+  if(btn)btn.addEventListener('click',function(){var n=cur()==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);try{localStorage.setItem('theme',n)}catch(e){}icon();});
+
+  var rev=[].slice.call(document.querySelectorAll('.reveal'));
+  if(reduce||!('IntersectionObserver'in window)){rev.forEach(function(e){e.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12});rev.forEach(function(e){io.observe(e)});}
+
+  function fin(el){return (el.getAttribute('data-pre')||'')+el.getAttribute('data-count')+(el.getAttribute('data-suf')||'');}
+  function run(el){
+    var to=parseFloat(el.getAttribute('data-count')),pre=el.getAttribute('data-pre')||'',suf=el.getAttribute('data-suf')||'',start=null,dur=1000;
+    function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);var v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=pre+v+suf;if(p<1)requestAnimationFrame(step);else el.textContent=fin(el);}
+    requestAnimationFrame(step);
+  }
+  var nums=[].slice.call(document.querySelectorAll('[data-count]'));
+  if(reduce||!('IntersectionObserver'in window)){nums.forEach(function(el){el.textContent=fin(el);});}
+  else{var io2=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){run(x.target);io2.unobserve(x.target);}});},{threshold:.6});nums.forEach(function(el){io2.observe(el)});}
+})();
+</script>
+</body>
+</html>

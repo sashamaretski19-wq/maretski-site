@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Автоопределение языка. Каноничная страница — русская.
+   Приоритет: ручной выбор (localStorage) > язык браузера. */
+(function(){
+  try{
+    var qs = new URLSearchParams(location.search);
+    if(qs.has('lang')){ try{ localStorage.setItem('lang', qs.get('lang')); }catch(e){} }
+    var pref = new URLSearchParams(location.search).get('lang'); if(pref){ try{ localStorage.setItem('lang', pref); }catch(e){} } else { try{ pref = localStorage.getItem('lang'); }catch(e){} }
+    if(pref === 'ru') return;                      // выбрал RU — остаёмся
+    if(pref === 'en'){ location.replace('index-v1-en.html?lang=en'); return; }
+    var l = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var slavic = l.indexOf('ru')===0 || l.indexOf('be')===0 || l.indexOf('uk')===0 || l.indexOf('kk')===0;
+    if(!slavic){ location.replace('index-v1-en.html'); }   // не славянский браузер — EN
+  }catch(e){}
+})();
+</script>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="ru" href="https://marecki.me/index-v1.html">
+<link rel="alternate" hreflang="en" href="https://marecki.me/index-v1-en.html">
+<link rel="alternate" hreflang="x-default" href="https://marecki.me/index-v1.html">
+<title>Sasha Marecki — маркетинг в e-commerce</title>
+<style>
+  :root{
+    --bg:#f7f5ef;          /* тёплый кремовый */
+    --bg-card:#fffdf8;
+    --ink:#1f1d1a;
+    --ink-soft:#57534c;
+    --muted:#8b857a;
+    --line:#e6e1d6;
+    --accent:#c15f3c;      /* глиняный / clay */
+    --accent-2:#a94f30;
+    --serif:ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+    --sans:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --maxw:940px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:#f0d9cd}
+
+  /* language switch */
+  .lang{position:fixed;top:18px;right:18px;z-index:50;display:flex;gap:2px;
+    background:var(--bg-card);border:1px solid var(--line);border-radius:999px;padding:3px;
+    box-shadow:0 4px 16px rgba(60,40,25,.10)}
+  .lang a{font-size:13px;font-weight:700;text-decoration:none;color:var(--ink-soft);
+    padding:6px 13px;border-radius:999px;line-height:1;letter-spacing:.03em}
+  .lang a.active{background:var(--accent);color:#fff}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 60px}
+  .hero-inner{display:flex;gap:44px;align-items:center;flex-wrap:wrap}
+  .photo{
+    flex:0 0 auto;
+    width:168px;height:168px;border-radius:50%;
+    object-fit:cover;object-position:66% 30%;
+    border:5px solid var(--bg-card);
+    box-shadow:0 10px 40px rgba(60,40,25,.16);
+  }
+  .hero-text{flex:1 1 340px;min-width:280px}
+  .eyebrow{
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:16px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-size:clamp(38px,6.5vw,60px);
+    line-height:1.02;font-weight:600;letter-spacing:-.5px;color:var(--ink);
+  }
+  .subtitle{font-size:clamp(18px,2.4vw,22px);color:var(--ink-soft);margin-top:18px;max-width:560px}
+  .subtitle b{color:var(--ink);font-weight:600}
+  .meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+  .chip{
+    font-size:13.5px;color:var(--ink-soft);
+    padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg-card);
+  }
+  .contacts{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+  .contacts a{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14.5px;font-weight:600;text-decoration:none;color:var(--accent-2);
+    padding:9px 16px;border:1px solid #e2c6b8;border-radius:12px;background:var(--bg-card);
+    transition:background .16s ease, border-color .16s ease, transform .16s ease;
+  }
+  .contacts a:hover{background:#f8ece5;border-color:var(--accent);transform:translateY(-2px)}
+  .contacts svg{width:17px;height:17px;flex:0 0 auto}
+  .qr-card{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:12px;border:1px solid #e2c6b8;border-radius:16px;background:var(--bg-card);
+    text-decoration:none;transition:background .16s ease,border-color .16s ease,transform .16s ease;
+  }
+  .qr-card:hover{background:#f8ece5;border-color:var(--accent);transform:translateY(-2px)}
+  .qr-card img{width:92px;height:92px;display:block;border-radius:8px}
+  .qr-card .qr-txt b{display:flex;align-items:center;gap:7px;color:var(--ink);font-size:15px;font-weight:700}
+  .qr-card .qr-txt .h{color:var(--accent-2);font-size:14px;font-weight:600;margin-top:2px}
+  .qr-card .qr-txt .hint{color:var(--muted);font-size:12.5px;margin-top:6px;max-width:150px;line-height:1.35}
+  .qr-card .qr-txt svg{width:16px;height:16px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0}
+  .divider{height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto}
+  .kicker{
+    font-family:var(--sans);
+    font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:20px;
+  }
+  h2{font-family:var(--serif);font-size:clamp(26px,3.8vw,34px);font-weight:600;letter-spacing:-.3px;line-height:1.15;margin-bottom:24px}
+  .prose p{font-size:18px;color:var(--ink-soft);max-width:720px}
+  .prose p + p{margin-top:18px}
+  .prose b{color:var(--ink);font-weight:600}
+
+  /* now — directions */
+  .dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:6px}
+  .dir{
+    background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:24px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .dir:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(60,40,25,.09)}
+  .dir h3{font-family:var(--sans);font-size:17px;font-weight:700;margin-bottom:8px}
+  .dir p{font-size:14.5px;color:var(--muted);line-height:1.55}
+
+  /* timeline */
+  .timeline{margin-top:6px;border-left:2px solid var(--line);padding-left:0}
+  .tl-item{position:relative;display:grid;grid-template-columns:150px 1fr;gap:26px;padding:0 0 34px 30px}
+  .tl-item::before{
+    content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;
+    background:var(--accent);border:3px solid var(--bg);
+  }
+  .tl-item:last-child{padding-bottom:0}
+  .tl-when{font-size:14px;color:var(--muted);font-weight:600;padding-top:1px}
+  .tl-when .yrs{display:block;font-weight:400;font-size:13px;color:#a8a297;margin-top:2px}
+  .tl-role{font-size:18px;font-weight:700;color:var(--ink)}
+  .tl-field{font-size:15px;color:var(--accent-2);font-weight:600;margin:2px 0 6px}
+  .tl-desc{font-size:15px;color:var(--ink-soft);line-height:1.55}
+
+  /* education */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:6px}
+  .edu{background:var(--bg-card);border:1px solid var(--line);border-radius:16px;padding:24px 24px 22px}
+  .edu .flag{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .edu h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:10px 0 6px;line-height:1.2}
+  .edu p{font-size:14.5px;color:var(--muted)}
+
+  /* facts */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:6px}
+  .fact{display:flex;gap:14px;align-items:flex-start}
+  .fact .mark{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:#f0d9cd;color:var(--accent-2);
+    display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;font-family:var(--serif)}
+  .fact p{font-size:15.5px;color:var(--ink-soft);line-height:1.5}
+  .fact b{color:var(--ink);font-weight:600}
+
+  /* skills */
+  .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .skill{font-size:14.5px;color:var(--ink);background:var(--bg-card);border:1px solid var(--line);
+    border-radius:10px;padding:9px 15px}
+
+  /* finale */
+  .finale{padding:80px 0}
+  .finale blockquote{
+    font-family:var(--serif);font-size:clamp(24px,3.6vw,34px);line-height:1.3;font-weight:500;
+    color:var(--ink);max-width:780px;letter-spacing:-.2px;
+  }
+  .finale blockquote::before{content:"“";color:var(--accent);font-size:1.2em;line-height:0;vertical-align:-.15em;margin-right:.04em}
+  .finale .who{margin-top:24px;font-size:15px;color:var(--muted);letter-spacing:.03em}
+
+  footer{padding:36px 0;border-top:1px solid var(--line)}
+  footer p{font-size:13px;color:var(--muted)}
+
+  @media (max-width:640px){
+    .hero{padding:56px 0 40px}
+    .hero-inner{gap:26px}
+    .photo{width:128px;height:128px}
+    section{padding:40px 0}
+    .tl-item{grid-template-columns:1fr;gap:6px;padding-left:26px}
+    .tl-when{padding-top:0}
+  }
+</style>
+</head>
+<body>
+
+  <!-- language switch -->
+  <nav class="lang">
+    <a href="index-v1.html" class="active" onclick="try{localStorage.setItem('lang','ru')}catch(e){}">RU</a>
+    <a href="index-v1-en.html?lang=en" onclick="try{localStorage.setItem('lang','en')}catch(e){}">EN</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <img class="photo" src="images/Photo.png?v=2" alt="Sasha Marecki">
+        <div class="hero-text">
+          <div class="eyebrow">E-commerce marketing</div>
+          <h1>Sasha Marecki</h1>
+          <p class="subtitle">Директор по маркетингу с опытом <b>20+ лет</b> — от FMCG и розничных сетей до <b>e-commerce marketing</b>. Строю маркетинг как систему, которая даёт предсказуемый рост.</p>
+          <div class="meta">
+            <span class="chip">Минск</span>
+            <span class="chip">CMO · Head of Marketing</span>
+            <span class="chip">Data-driven</span>
+          </div>
+          <div class="contacts">
+            <a class="qr-card" href="https://t.me/A_Marecki" target="_blank" rel="noopener">
+              <img src="images/telegram-qr.svg?v=1" alt="QR-код Telegram — @A_Marecki">
+              <span class="qr-txt">
+                <b><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.94 4.5 18.9 19.2c-.23 1.02-.83 1.27-1.68.79l-4.64-3.42-2.24 2.16c-.25.25-.46.46-.94.46l.33-4.73L18.6 5.9c.37-.33-.08-.51-.58-.18L6.4 13.06l-4.6-1.44c-1-.31-1.02-1 .21-1.48L20.65 3.05c.83-.31 1.56.2 1.29 1.45Z"/></svg>Telegram</b>
+                <span class="h">@A_Marecki</span>
+                <span class="hint">Наведи камеру телефона, чтобы открыть</span>
+              </span>
+            </a>
+            <a href="mailto:sasha.maretski19@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 7 9-7"/></svg>
+              sasha.maretski19@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section class="prose">
+    <div class="wrap">
+      <div class="kicker">Обо мне</div>
+      <h2>Маркетинг как система, а не набор кампаний</h2>
+      <p>За двадцать с лишним лет я прошёл путь от вывода торговых марок на рынок до руководства маркетингом в e-commerce. Разные индустрии — фарма, FMCG, дистрибуция, розничные сети, интернет-ритейл — научили одному: устойчивый рост берётся не из ярких активаций, а из выстроенной системы, где каждая часть работает на выручку и клиента.</p>
+      <p>Мыслю в логике цифр и причинно-следственных связей: не «охваты выросли», а что это дало выручке, заказам и активной клиентской базе. <b>Baseline, разрезы по сегментам, экономический эффект</b> — для меня это не отчётность ради отчётности, а способ принимать решения, которые можно защитить перед первым лицом бизнеса.</p>
+      <p>Люблю строить с нуля и наводить порядок в процессах — не раз ставил отдел маркетинга и его методологию там, где их не было.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- NOW -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Чем занимаюсь сейчас</div>
+      <h2>Маркетинг e-commerce под единой стратегией</h2>
+      <div class="dir-grid">
+        <div class="dir"><h3>Digital</h3><p>Performance, SEO, маркетплейсы, программатик. Медиапланы и бюджеты — по ДРР, CPO и ROMI, со сквозной атрибуцией.</p></div>
+        <div class="dir"><h3>PR / SMM</h3><p>Узнаваемость и репутация, работа с медиа и инфлюенсерами, антикризисные коммуникации.</p></div>
+        <div class="dir"><h3>Brand</h3><p>Позиционирование и единая платформа бренда во всех каналах. Brand health и NPS как ориентир.</p></div>
+        <div class="dir"><h3>CRM</h3><p>Рост активной клиентской базы и повторных покупок: сегментация, персонализация, лояльность, единый профиль клиента.</p></div>
+        <div class="dir"><h3>B2B</h3><p>Отдельная стратегия для корпоративного сегмента: продуктовая линейка, ценообразование, поддержка продаж.</p></div>
+        <div class="dir"><h3>Аналитика</h3><p>Сквозная аналитика по каналам, отчётность для руководства, A/B-тесты гипотез по сегментам.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CAREER -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Карьерный путь</div>
+      <h2>20+ лет в маркетинге — по направлениям</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-when">наст. время<span class="yrs"></span></div>
+          <div>
+            <div class="tl-role">Директор по маркетингу</div>
+            <div class="tl-field">E-commerce / интернет-ритейл</div>
+            <div class="tl-desc">Стратегия и P&amp;L маркетинга, пять направлений в команде, рост выручки, заказов и АКБ при контроле ДРР.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2014 — 2021<span class="yrs">~7 лет</span></div>
+          <div>
+            <div class="tl-role">Директор по маркетингу</div>
+            <div class="tl-field">Розничные сети (drogerie, товары для дома, продукты)</div>
+            <div class="tl-desc">Построение отделов маркетинга с нуля, категорийный менеджмент, программы лояльности, digital и SMM, управление бюджетом.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2010 — 2014<span class="yrs">~4 года</span></div>
+          <div>
+            <div class="tl-role">Бренд-менеджмент</div>
+            <div class="tl-field">FMCG (кофе, чай, кондитерка)</div>
+            <div class="tl-desc">Вывод собственных торговых марок, доли рынка до 40% в категории, трейд-активности с ключевыми клиентами, управление продуктовым портфелем.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">≈ 2004 — 2010<span class="yrs">~6 лет</span></div>
+          <div>
+            <div class="tl-role">Дивизион-менеджер</div>
+            <div class="tl-field">Фармацевтика и FMCG, рынок РФ</div>
+            <div class="tl-desc">Запуск собственных торговых марок на рынке РФ, построение продаж и дистрибуции по территориям, управление региональными командами.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Образование</div>
+      <h2>Беларусь и Нидерланды</h2>
+      <div class="edu-grid">
+        <div class="edu">
+          <div class="flag">Беларусь</div>
+          <h3>Маркетинг</h3>
+          <p>Высшее — маркетинг и коммерческая деятельность.</p>
+        </div>
+        <div class="edu">
+          <div class="flag">Беларусь</div>
+          <h3>Философия</h3>
+          <p>БГУ — высшее гуманитарное, философия и социальные науки.</p>
+        </div>
+        <div class="edu" style="border-color:#e2c6b8;background:#fbf1ea">
+          <div class="flag">Netherlands</div>
+          <h3>Marketing Executive Master EQF-6</h3>
+          <p><a href="https://emc.be" target="_blank" rel="noopener" style="color:var(--accent-2);text-decoration:none;border-bottom:1px solid #e2c6b8">emc.be</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FACTS -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Немного вне резюме</div>
+      <h2>Что важно знать</h2>
+      <div class="facts">
+        <div class="fact"><div class="mark">4+</div><p><b>Преподаю</b> курсы «управление клиентской базой» и «интеграция маркетинга и продаж» в бизнес-школе — больше четырёх лет.</p></div>
+        <div class="fact"><div class="mark">₽</div><p>Vanity-метрики без связи с деньгами меня не убеждают: <b>охваты должны конвертироваться</b> в заказы.</p></div>
+        <div class="fact"><div class="mark">≡</div><p>Люблю <b>conclusion-first</b>: сначала вывод и цифры, потом причины, в конце — рекомендация.</p></div>
+        <div class="fact"><div class="mark">~</div><p>Вне работы — <b>плавание, пешие прогулки</b> и художественная литература (sci-fi и fantasy).</p></div>
+      </div>
+      <div class="skills" style="margin-top:34px">
+        <span class="skill">Стратегическое планирование</span>
+        <span class="skill">Бренд-менеджмент</span>
+        <span class="skill">Маркетинговый анализ</span>
+        <span class="skill">Управление бюджетом</span>
+        <span class="skill">Продуктовый портфель</span>
+        <span class="skill">Управление проектами</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FINALE -->
+  <section class="finale">
+    <div class="wrap">
+      <blockquote>Маркетинг — это не про красивые кампании, а про предсказуемый рост, который можно объяснить цифрами.</blockquote>
+      <div class="who">— Sasha Marecki</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Sasha Marecki · архив &nbsp;·&nbsp;
+        <a href="index.html" style="color:var(--accent-2);text-decoration:none;border-bottom:1px solid var(--line);font-weight:600">Актуальная версия →</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

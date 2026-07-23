@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>404 — страница не найдена</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#f7f5ef;--ink:#1f1d1a;--muted:#8b857a;--accent:#c15f3c;--accent-2:#a94f30;
+    --serif:ui-serif,Georgia,"Palatino Linotype","Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  @media (prefers-color-scheme: dark){:root{--bg:#1a1714;--ink:#f3eee5;--muted:#9a9284;--accent:#dd8563;--accent-2:#e79a78}}
+  *{margin:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+  .code{font-family:var(--serif);font-size:clamp(72px,18vw,140px);font-weight:600;color:var(--accent);line-height:1;letter-spacing:-2px}
+  h1{font-family:var(--serif);font-size:clamp(22px,4vw,30px);font-weight:600;margin:12px 0 10px}
+  p{color:var(--muted);font-size:16px;margin-bottom:28px}
+  a{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:700;font-size:15px;padding:13px 24px;border-radius:12px;transition:background .16s ease,transform .16s ease}
+  a:hover{background:var(--accent-2);transform:translateY(-2px)}
+</style>
+</head>
+<body>
+  <div>
+    <div class="code">404</div>
+    <h1>Такой страницы нет</h1>
+    <p>Возможно, ссылка устарела или содержит опечатку.</p>
+    <a href="/">← На главную</a>
+  </div>
+</body>
+</html>

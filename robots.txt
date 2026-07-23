@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /index-v1.html
+Disallow: /index-v1-en.html
+
+Sitemap: https://marecki.me/sitemap.xml
